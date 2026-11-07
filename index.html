@@ -1,0 +1,568 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grand Housewarming Invitation</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    background: #10091f;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* MAIN BACKGROUND */
+.page {
+    min-height: 100vh;
+    padding: 65px 15px;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 10% 10%, #79204e66, transparent 35%),
+        radial-gradient(circle at 90% 80%, #50208b66, transparent 40%),
+        linear-gradient(135deg,#10091f,#21102e,#10091f);
+}
+
+/* STARS */
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%,#fff,transparent),
+      radial-gradient(2px 2px at 70% 20%,#ffcb80,transparent),
+      radial-gradient(2px 2px at 40% 80%,#ff8bc8,transparent),
+      radial-gradient(2px 2px at 90% 60%,#fff,transparent);
+    background-size: 180px 180px;
+    opacity: .6;
+}
+
+/* CONFETTI */
+.confetti {
+    position: fixed;
+    top: -20px;
+    z-index: 20;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+    }
+    100% {
+        transform: translateY(110vh) rotate(900deg);
+    }
+}
+
+/* STREAMERS */
+.streamer {
+    position: absolute;
+    width: 13px;
+    height: 190px;
+    top: -35px;
+    border-radius: 50%;
+    animation: swing 3s ease-in-out infinite alternate;
+}
+
+.s1 {left:5%;background:#ff3b9d;}
+.s2 {left:15%;background:#ffc83d;}
+.s3 {right:8%;background:#9b65ff;}
+.s4 {right:17%;background:#30e6b0;}
+
+@keyframes swing {
+    from {transform:rotate(-25deg);}
+    to {transform:rotate(25deg);}
+}
+
+/* FLOATING FLOWERS */
+.decor {
+    position: absolute;
+    font-size: 48px;
+    animation: float 4s ease-in-out infinite;
+    z-index: 1;
+}
+
+.d1 {top:130px;left:3%;}
+.d2 {top:380px;right:3%;animation-delay:1s;}
+.d3 {bottom:90px;left:5%;animation-delay:2s;}
+.d4 {bottom:100px;right:5%;animation-delay:1.5s;}
+
+@keyframes float {
+    50% {transform:translateY(-18px) rotate(10deg);}
+}
+
+/* INVITATION CARD */
+.invitation {
+    width: min(650px,100%);
+    margin: auto;
+    padding: 45px 30px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    border-radius: 25px;
+
+    background:
+        linear-gradient(145deg,#291832,#190e29,#29152e);
+
+    border: 2px solid #e9ad55;
+    outline: 1px dashed #ff55ae;
+    outline-offset: -13px;
+
+    box-shadow:
+        0 0 20px #ff55ae44,
+        0 0 60px #8546ff33,
+        0 25px 70px #000;
+
+    animation: reveal 1.5s ease;
+}
+
+@keyframes reveal {
+    from {
+        opacity:0;
+        transform:translateY(60px) scale(.85);
+    }
+    to {
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* TEXT */
+.om {
+    font-size: 42px;
+    color: #ffc45b;
+    text-shadow: 0 0 20px #ff9d35;
+    margin-bottom: 12px;
+}
+
+.small-title {
+    color: #ffb6d9;
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+h1 {
+    color: #ff65b3;
+    font-size: clamp(30px,7vw,49px);
+    margin: 20px 0;
+    text-shadow:
+        0 0 10px #ff3d9d,
+        0 0 30px #ff3d9d;
+}
+
+.subtitle {
+    color: #ffd477;
+    font-size: 19px;
+    font-style: italic;
+}
+
+.divider {
+    margin: 22px auto;
+    color: #ffc65a;
+    font-size: 23px;
+    text-shadow: 0 0 15px #ffb52e;
+}
+
+/* HOUSE ILLUSTRATION */
+.house {
+    width: 240px;
+    height: 170px;
+    margin: 35px auto 25px;
+    position: relative;
+    animation: houseFloat 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px #ff9a4d55);
+}
+
+@keyframes houseFloat {
+    50% {transform:translateY(-10px);}
+}
+
+.roof {
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 10px;
+    border-left: 110px solid transparent;
+    border-right: 110px solid transparent;
+    border-bottom: 80px solid #ff6b61;
+    filter: drop-shadow(0 5px 4px #9f384a);
+}
+
+.wall {
+    position: absolute;
+    top: 78px;
+    left: 35px;
+    width: 170px;
+    height: 85px;
+    background: linear-gradient(135deg,#ffe18a,#ffb64b);
+    border: 4px solid #e98a46;
+    box-shadow: 8px 8px 0 #9b4c68;
+}
+
+.door {
+    position: absolute;
+    bottom: 0;
+    left: 65px;
+    height: 63px;
+    width: 40px;
+    background: #74394e;
+    border: 3px solid #ff9970;
+    border-radius: 20px 20px 0 0;
+}
+
+.door:after {
+    content: "•";
+    position: absolute;
+    right: 5px;
+    top: 30px;
+    color: #ffdb69;
+}
+
+.window {
+    position: absolute;
+    width: 29px;
+    height: 30px;
+    top: 17px;
+    background: #8be7ff;
+    border: 3px solid #ef8a68;
+    box-shadow: 0 0 15px #5be7ff;
+}
+
+.w1 {left:12px;}
+.w2 {right:12px;}
+
+.window:after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    height: 100%;
+    border-left: 2px solid #d36b5b;
+}
+
+.house-flower {
+    position: absolute;
+    font-size: 30px;
+    animation: spin 7s linear infinite;
+}
+
+.f1 {left:-20px;top:55px;}
+.f2 {right:-20px;top:30px;}
+
+@keyframes spin {
+    to {transform:rotate(360deg);}
+}
+
+/* INVITATION DETAILS */
+.names {
+    color: #f8c767;
+    font-size: clamp(24px,5vw,34px);
+    font-weight: bold;
+    margin: 17px 0;
+    text-shadow: 0 0 15px #ff399a66;
+    outline: none;
+}
+
+.and {
+    color: #eaefd7;
+    font-size: 19px;
+    font-style: italic;
+}
+
+.message {
+    max-width: 470px;
+    margin: 20px auto;
+    line-height: 1.9;
+    font-size: 16px;
+    color:#eaefd7;
+}
+
+.details {
+    background: linear-gradient(135deg,#392047,#291638);
+    border: 1px solid #e9a34e;
+    border-radius: 18px;
+    padding: 22px 15px;
+    margin-top: 25px;
+    line-height: 2.2;
+    box-shadow: 0 0 25px #a44b8a22;
+    color: #f6e7ed;
+}
+
+.details strong {
+    color: #ffc45b;
+}
+
+.editable {
+    outline: none;
+    border-bottom: 1px dashed #ff8fc4;
+}
+
+.editable:focus {
+    background: #ffffff12;
+    border-radius: 4px;
+}
+
+.footer {
+    color: #ffbf78;
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 25px;
+    text-shadow: 0 0 10px #ff9e4c66;
+}
+
+/* BUTTON */
+.music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 30;
+    background: #e84b9b;
+    border: 1px solid #ffc45b;
+    color: white;
+    padding: 12px 17px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff55ae77;
+}
+
+.music-btn:hover {
+    transform: scale(1.08);
+}
+
+.edit-note {
+    text-align: center;
+    margin: 25px auto 5px;
+    color: #c5a9d9;
+    font: 13px Arial;
+}
+
+@media(max-width:480px) {
+    .invitation {
+        padding: 40px 20px;
+    }
+
+    .decor {
+        font-size: 32px;
+    }
+
+    .house {
+        transform: scale(.9);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="stars"></div>
+
+<div class="streamer s1"></div>
+<div class="streamer s2"></div>
+<div class="streamer s3"></div>
+<div class="streamer s4"></div>
+
+<div class="decor d1">🌺</div>
+<div class="decor d2">🌼</div>
+<div class="decor d3">🌸</div>
+<div class="decor d4">🪷</div>
+
+<div class="invitation">
+
+    <div class="om">🪔 ॐ 🪔</div>
+
+    <div class="small-title">
+        WITH THE BLESSINGS OF GOD
+    </div>
+
+    <h1>House Warming</h1>
+
+    <div class="subtitle">
+        A New Beginning • A New Blessing
+    </div>
+
+    <div class="divider">❀ ━━━━━ ❀</div>
+
+    <!-- HOUSE -->
+    <div class="house">
+
+        <div class="roof"></div>
+
+        <div class="wall">
+            <div class="window w1"></div>
+            <div class="window w2"></div>
+            <div class="door"></div>
+        </div>
+
+        <div class="house-flower f1">🌸</div>
+        <div class="house-flower f2">🌼</div>
+
+    </div>
+
+    <div class="small-title">
+        CORDIALLY INVITE YOU TO CELEBRATE
+    </div>
+
+    <div class="names editable" contenteditable="true">
+        Mr. P.S.Rajesh Kanna <br>
+        Mrs. V.Sridevi<br>
+        <br>
+    </div>
+
+    <div class="and">
+        Along with our beloved daughters
+    </div>
+
+    <div class="names editable" style="font-size:23px"
+         contenteditable="true">
+        R.Tanushkaa & R.Prathikshaa<br>
+        <br>
+    </div>
+
+    <p class="message">
+        With immense joy and happiness, we invite you
+        and your family to grace the auspicious occasion
+        of our new home. Your presence and blessings
+        will make our celebration more memorable.
+    </p>
+
+    <div class="divider">✿ ❀ ✿</div>
+
+    <!-- EVENT DETAILS -->
+    <div class="details">
+
+        <div>
+            📅 <strong>Date:</strong>
+            <span class="editable" contenteditable="true">
+                29 / 11 / 2026
+            </span>
+        </div>
+
+        <div>
+            ⏰ <strong>Time:</strong>
+            <span class="editable" contenteditable="true">
+                Morning 7:00 am to 9:00 am
+            </span>
+        </div>
+
+        <div>
+            📍 <strong>Venue:</strong>
+        </div>
+
+        <div class="editable" contenteditable="true">
+            No.44, Bharathi Nagar,<br>
+            Vellakulam, Sevapet,<br>
+            Tiruvallur - 602 025.
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Your presence is our greatest blessing ❤️
+        <br><br>
+        🙏 Welcome 🙏
+    </div>
+
+</div>
+
+<div class="edit-note">
+    
+</div>
+
+</div>
+
+<button class="music-btn" onclick="toggleMusic()">
+    🔊 Music
+</button>
+
+<script>
+
+// COLOURFUL FALLING PAPER CONFETTI
+
+const colors = [
+    "#ff477e",
+    "#ffca3a",
+    "#8ac926",
+    "#9b5de5",
+    "#00bbf9",
+    "#ff924c",
+    "#f15bb5",
+    "#30e6b0"
+];
+
+for (let i = 0; i < 100; i++) {
+
+    const piece = document.createElement("div");
+
+    piece.className = "confetti";
+
+    piece.style.left = Math.random() * 100 + "vw";
+
+    piece.style.backgroundColor =
+        colors[Math.floor(Math.random() * colors.length)];
+
+    piece.style.animationDuration =
+        (3 + Math.random() * 6) + "s";
+
+    piece.style.animationDelay =
+        (Math.random() * 6) + "s";
+
+    piece.style.width =
+        (6 + Math.random() * 9) + "px";
+
+    piece.style.height =
+        (8 + Math.random() * 15) + "px";
+
+    if (Math.random() > 0.5) {
+        piece.style.borderRadius = "50%";
+    }
+
+    document.body.appendChild(piece);
+}
+
+
+// OPTIONAL BACKGROUND MUSIC
+// Add your own music file named celebration.mp3
+// in the same folder as index.html.
+
+let audio = new Audio("celebration.mp3");
+audio.loop = true;
+
+let playing = false;
+
+function toggleMusic() {
+
+    if (!playing) {
+        audio.play().then(() => {
+            playing = true;
+            document.querySelector(".music-btn").innerText =
+                "🔇 Stop Music";
+        }).catch(() => {
+            alert("Add celebration.mp3 to the same folder first.");
+        });
+    } else {
+        audio.pause();
+        playing = false;
+        document.querySelector(".music-btn").innerText =
+            "🔊 Music";
+    }
+
+}
+
+</script>
+
+</body>
+</html>
